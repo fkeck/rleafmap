@@ -2,4 +2,6 @@
 ### Interactive maps with R and Leaflet
 rleafmap is an R package to display spatial data with interactive maps powered by Leaflet.
 
-Check the website of the package here: http://www.francoiskeck.fr/rleafmap/
+Here is a [presentation](http://www.francoiskeck.fr/rleafmap/docs/rleafmap_rencontreR/index_EN.html)  of the package (use fullscreen to avoid display problems).
+
+Check the website of the package [here](http://www.francoiskeck.fr/rleafmap/).
