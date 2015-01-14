@@ -1,0 +1,10 @@
+Package: rleafmap
+Title: Interactive maps with R and Leaflet
+Description: This package allows to export geographical data from R to
+    interactive maps powered by Leaflet
+Version: 0.1
+Author: François Keck <francois.keck@gmail.com>
+Maintainer: François Keck <francois.keck@gmail.com>
+Depends:
+    R (>= 3.0.0)
+License: GPL-3
