@@ -115,7 +115,7 @@ spLayer.SpatialPoints <- function(x, name=NULL, png=NULL, size=5, png.width=15, 
         tab$label <- paste("\"", as.character(tab$label), "\"", sep="")
       if("popup" %in% tested.names){
         if(popup.rmd){
-          tab$popup <- sapply(as.vector(tab$popup), function(x) knit2html(output = NULL, text = x,
+          tab$popup <- sapply(as.vector(tab$popup), function(x) knitr::knit2html(output = NULL, text = x,
                                                     options = c('fragment_only', 'base64_images')))
           tab$popup <- gsub("\\n", "<br>", tab$popup)
           tab$popup <- gsub("\"", "\\\\\"", tab$popup)
