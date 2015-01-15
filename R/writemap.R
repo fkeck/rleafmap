@@ -95,6 +95,7 @@ writeMapInternal <- function(ar, dir, prefix, width, height, setView, setZoom,
   #Include html+css code
   inc.encoding <- incEncoding(code="UTF-8")
   inc.leaflet <- incLeaflet(loc=leaflet.loc)
+  inc.popup.css <- incPopupCSS()
   inc.data <- incData(prefix=prefix)
   init.map0 <- initMap0(height=height, width=width)
   init.map1 <- initMap1(setView, setZoom)
@@ -170,7 +171,7 @@ writeMapInternal <- function(ar, dir, prefix, width, height, setView, setZoom,
   
   # Compile
   map.file <- paste(dir, "/", prefix, "_map.html", sep="")
-  write(paste(inc.encoding, inc.leaflet, inc.data, init.map0,
+  write(paste(inc.encoding, inc.leaflet, inc.popup.css, inc.data, init.map0,
               "<script>", init.map1, ui.js.1, bm.js,
               sppol.js, spgrid.js, splns.js, sppts.js, spico.js, ui.js.2, "</script>",
               sep="\n\n"), map.file)
