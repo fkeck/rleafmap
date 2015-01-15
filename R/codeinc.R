@@ -20,8 +20,17 @@ incEncoding <- function(code){
   return(res)
 }
 
-incPopupCSS <- function(){
-  res <- "<style type=\"text/css\">\n\t.leaflet-popup-content {\n\t\twidth:auto !important;\n\t}\n</style>"
+#'@rdname chunks
+incPopupCSS <- function(height, width){
+  res <- paste("<style type=\"text/css\">
+\t.leaflet-popup-content {
+\t\tpadding-right:20px !important;
+\t\twidth:auto !important;
+\t\tmax-width:", width*0.75, "px !important;
+\t\tmax-height:", height*0.75, "px !important;
+\t\toverflow:auto !important;
+\t}
+  </style>", sep="")
   return(res)
 }
 
