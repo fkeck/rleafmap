@@ -20,6 +20,11 @@ incEncoding <- function(code){
   return(res)
 }
 
+incPopupCSS <- function(){
+  res <- "<style type=\"text/css\">\n\t.leaflet-popup-content {\n\t\twidth:auto !important;\n\t}\n</style>"
+  return(res)
+}
+
 #'@rdname chunks
 incData <- function(prefix){
   paste("<script src=\"", prefix,"_data/", prefix,"_datapoints.js\"></script>
