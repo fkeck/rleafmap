@@ -95,13 +95,14 @@ writeMapInternal <- function(ar, dir, prefix, width, height, setView, setZoom,
   #Include html+css code
   inc.encoding <- incEncoding(code="UTF-8")
   inc.leaflet <- incLeaflet(loc=leaflet.loc)
-  inc.popup.css <- incPopupCSS(height=height, width=width)
   inc.data <- incData(prefix=prefix)
   init.map0 <- initMap0(height=height, width=width)
   init.map1 <- initMap1(setView, setZoom)
+  inc.popup.css <- incPopupCSS(height=height, width=width)
+  
   
   #Interface Controls
-  ui.js <- uiJS(interface=interface, ar=ar)
+  ui.js <- uiJS(interface = interface, ar = ar)
   ui.js.1 <- ui.js$ui.1
   ui.js.2 <- ui.js$ui.2
   
