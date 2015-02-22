@@ -165,6 +165,7 @@ writeMapInternal <- function(ar, dir, prefix, width, height, setView, setZoom,
     spgrid.js <- toJS(x, paste(prefix, "_data","/", prefix, "_rasters", "/", prefix, "_", safeVar(x$name), ".png", sep=""))
     png(url, bg="transparent", width=600, height=round(600*pngasp(x)), type="cairo")
     par(mar = c(0, 0, 0, 0), xaxs = "i", yaxs = "i")
+    proj4string(x$x) <- CRS("+init=epsg:4326")
     image(x$x, col=x$cells.col)
     dev.off()
     return(spgrid.js)
