@@ -181,18 +181,25 @@ bmSource <- function(print.servers=TRUE){
                         "stamen.toner.lines",       "http://tile.stamen.com/toner-lines/{z}/{x}/{y}.jpg",
                         "stamen.toner.background",  "http://tile.stamen.com/toner-background/{z}/{x}/{y}.jpg",
                         "stamen.toner.lite",        "http://tile.stamen.com/toner-lite/{z}/{x}/{y}.jpg",
-                        "stamen.watercolor",        "http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg"
+                        "stamen.watercolor",        "http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg",
+                        "cartodb.positron",         "http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png",
+                        "cartodb.positron.nolab",   "http://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png",
+                        "cartodb.darkmatter",       "http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
+                        "cartodb.darkmatter.nolab", "http://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png"
                       ), ncol=2, byrow=T)
   
   mapquest.tiles.cr <- "Tiles: <a href=\"http://www.mapquest.com/\" target=\"_blank\" title=\"Tiles Courtesy of MapQuest\">MapQuest</a>"
   stamen.tiles.cr <- "Tiles: <a href=\"http://stamen.com\" title=\"Map tiles by Stamen Design, under CC BY 3.0.\">Stamen Design</a>"
+  cartodb.tiles.cr <- "Tiles: <a href=\"http://cartodb.com/\" title=\"CartoDB\">CartoDB</a>"
   osm.data.cr <- "Data: <a href=\"http://openstreetmap.org\" title=\"Data by OpenStreetMap, under CC BY SA\">OSM</a>"
   nasa.data.cr <- "Data: <a href=\"\" title=\"NASA/JPL-Caltech and U.S. Depart. of Agriculture, Farm Service Agency\">NASA...</a>"
+  
   
   mapquest.map.cr <- paste(mapquest.tiles.cr, osm.data.cr, sep=" | ")
   mapquest.sat.cr <- paste(mapquest.tiles.cr, nasa.data.cr, sep=" | ")
   stamen.cr <- paste(stamen.tiles.cr, osm.data.cr, sep=" | ")
-  vec.cr <- c(mapquest.map.cr, mapquest.sat.cr, rep(stamen.cr, 7))
+  cartodb.cr <- paste(cartodb.tiles.cr, osm.data.cr, sep=" | ")
+  vec.cr <- c(mapquest.map.cr, mapquest.sat.cr, rep(stamen.cr, 7), rep(cartodb.cr, 4))
   bm.source <- cbind(bm.source, vec.cr)
   if(print.servers){
     cat(paste(bm.source[,1], collapse="\n"))
