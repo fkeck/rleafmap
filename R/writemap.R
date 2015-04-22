@@ -25,8 +25,8 @@
 #' 
 #' @export
 writeMap <- function(..., dir=getwd(), prefix="", width=700, height=400,
-                     setView=c(0,0), setZoom=6,
-                     interface=NULL, lightjson=F,
+                     setView=NULL, setZoom=NULL,
+                     interface=NULL, lightjson=FALSE,
                      directView=c("viewer", "browser", "disabled"),
                      leaflet.loc="online"){
   ar <- list(...)
@@ -170,6 +170,12 @@ writeMapInternal <- function(ar, dir, prefix, width, height, setView, setZoom,
     dev.off()
     return(spgrid.js)
   })
+  
+  if(is.null(setView)){
+    extbox <- getExtBox(sppts, spico, splns, sppol, spgrid)
+    init.map1 <- paste0(init.map1, "\n",
+                       "map.fitBounds([[", extbox[3], ",", extbox[1],"], [", extbox[4], ",", extbox[2], "]]);")
+  }
   
   # Compile
   map.file <- paste(dir, "/", prefix, "_map.html", sep="")

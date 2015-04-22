@@ -237,3 +237,50 @@ bmCredit <- function(x){
   }
   return(res)
 }
+
+#'Global Bounding Box
+#'
+#'Get the global bounding box of the data included in a map
+#'
+getExtBox <- function(sppts, spico, splns, sppol, spgrid){
+  if(length(sppts) > 0){
+    a <- t(sapply(sppts, function(x) c(min(x$coords[, 1]), max(x$coords[, 1]),
+                                     min(x$coords[, 2]), max(x$coords[, 2]))))
+  } else {
+    a <- rep(NA, 4)
+  }
+  
+  if(length(spico) > 0){
+  b <- t(sapply(spico, function(x) c(min(x$coords[, 1]), max(x$coords[, 1]),
+                                   min(x$coords[, 2]), max(x$coords[, 2]))))
+  } else {
+    b <- rep(NA, 4)
+  }
+  
+  if(length(splns) > 0){
+    c <- t(sapply(splns, function(x){z <- do.call("rbind", unlist(x$coords, recursive=FALSE));
+                                     return(c(min(z[, 1]), max(z[, 1]), min(z[, 2]), max(z[, 2])))}))
+  } else {
+    c <- rep(NA, 4)
+  }
+  
+  if(length(sppol) > 0){
+  d <- t(sapply(sppol, function(x){z <- do.call("rbind", unlist(x$coords, recursive=FALSE));
+                              return(c(min(z[, 1]), max(z[, 1]), min(z[, 2]), max(z[, 2])))}))
+  } else {
+    d <- rep(NA, 4)
+  }
+  
+  if(length(sppol) > 0){
+    e <- sapply(spgrid, function(x) as.vector(bbox(x$x))[c(1,3,2,4)])
+  } else {
+    e <- rep(NA, 4)
+  }
+  
+  extbox <- rbind(a, b, c, d, e)
+  extbox <- c(min(extbox[, 1], na.rm = TRUE),
+              max(extbox[, 2], na.rm = TRUE),
+              min(extbox[, 3], na.rm = TRUE),
+              max(extbox[, 4], na.rm = TRUE))
+  return(extbox)
+}

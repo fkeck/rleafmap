@@ -50,5 +50,7 @@ initMap0 <- function(height, width){
 
 #'@rdname chunks
 initMap1 <- function(setView, setZoom){
+  if(is.null(setView)) setView <- c(0, 0)
+  if(is.null(setZoom)) setZoom <- 1
   paste("var map = L.map('map', {zoomControl:false, attributionControl:false}).setView([", setView[1], ", ", setView[2],"], ", setZoom, ");", sep="")
 }
