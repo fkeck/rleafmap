@@ -1,5 +1,8 @@
 #' rleafmap
 #'
+#' @import sp
+#' @import knitr
+#'
 #' @name rleafmap
 #' @docType package
 NULL
