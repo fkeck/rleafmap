@@ -4,7 +4,7 @@
 \title{Export and display the map}
 \usage{
 writeMap(..., dir = getwd(), prefix = "", width = 700, height = 400,
-  setView = c(0, 0), setZoom = 6, interface = NULL, lightjson = F,
+  setView = NULL, setZoom = NULL, interface = NULL, lightjson = FALSE,
   directView = c("viewer", "browser", "disabled"), leaflet.loc = "online")
 }
 \arguments{
