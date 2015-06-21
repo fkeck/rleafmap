@@ -2,6 +2,7 @@
 #'
 #' @import sp
 #' @import knitr
+#' @import raster
 #'
 #' @name rleafmap
 #' @docType package
