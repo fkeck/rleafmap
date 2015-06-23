@@ -167,7 +167,7 @@ writeMapInternal <- function(ar, dir, prefix, width, height, setView, setZoom,
     par(mar = c(0, 0, 0, 0), xaxs = "i", yaxs = "i")
     
     rx <- raster(x$x, layer = 1)
-    rx <- projectRaster(from = rx, crs = CRS("+init=epsg:3857"))
+    rx <- projectRaster(from = rx, projectExtent(rx, crs = CRS("+init=epsg:3857")))
     rx <- as(rx, "SpatialGridDataFrame")
     
     image(rx, col=x$cells.col, asp = 1/cos((mean(bbox(x$x)[1, ]) * pi)/180))
