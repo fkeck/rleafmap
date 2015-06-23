@@ -163,14 +163,9 @@ writeMapInternal <- function(ar, dir, prefix, width, height, setView, setZoom,
   spgrid.js <- lapply(spgrid, function(x){
     url <- paste(raster.dir, "/", prefix, "_", safeVar(x$name), ".png", sep="")
     spgrid.js <- toJS(x, paste(prefix, "_data","/", prefix, "_rasters", "/", prefix, "_", safeVar(x$name), ".png", sep=""))
-    png(url, bg = "transparent", width = 1200, height = round(1200 * pngasp(x)), type = "cairo")
-    par(mar = c(0, 0, 0, 0), xaxs = "i", yaxs = "i")
-    
-    rx <- raster(x$x, layer = 1)
-    rx <- projectRaster(from = rx, projectExtent(rx, crs = CRS("+init=epsg:3857")))
-    rx <- as(rx, "SpatialGridDataFrame")
-    
-    image(rx, col=x$cells.col, asp = 1/cos((mean(bbox(x$x)[1, ]) * pi)/180))
+    png(url, bg = "transparent", width = 1200, height = round(1200 * pngasp(x$x.bbox)), type = "cairo")
+    par(mar = c(0, 0, 0, 0), xaxs = "i", yaxs = "i")    
+    image(x$x, col = x$cells.col, asp = 1/cos((mean(x$x.bbox[1, ]) * pi)/180))
     dev.off()
     return(spgrid.js)
   })

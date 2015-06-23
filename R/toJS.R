@@ -104,7 +104,7 @@ toJS <- function(x, url=""){     # x is an spl or bm object
   }
   
   if(is(x, "splgrid")){
-    bb <- bbox(x$x)
+    bb <- x$x.bbox
     res <- paste("var ", safeVar(x$name), "Raster = L.imageOverlay(\"", url, "\", [[",
                  bb[2,1], ",", bb[1,1], "],[",bb[2,2], ",",bb[1,2], "]]",
                  ").addTo(map);", sep="")

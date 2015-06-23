@@ -76,9 +76,9 @@ procpolys <- function(x) {
 }
 
 #'@rdname internals
-pngasp <- function(x){ #x is an splgrid object
-  xlim <- bbox(x$x)[1,]
-  ylim <- bbox(x$x)[2,]
+pngasp <- function(x){ #x is an sp bounding box.
+  xlim <- x[1,]
+  ylim <- x[2,]
   asp <- (diff(ylim)/diff(xlim))/cos((mean(ylim) * pi)/180)
   names(asp) <- NULL
   return(asp)

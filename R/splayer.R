@@ -286,9 +286,15 @@ spLayer.SpatialGridDataFrame <- function(x, name=NULL,
   spLayerControl(name=name)
   
   x <- x[layer]
+  x.bbox <- bbox(x)
   
-  cells.col <- col2hexa(cells.col, alpha.channel=T, alpha=cells.alpha, charstring=FALSE)
-  tab <- list(x=x, name=name, cells.col=cells.col)
+  x <- raster(x, layer = 1)
+  x <- projectRaster(from = x, projectExtent(x, crs = CRS("+init=epsg:3857")))
+  x <- as(x, "SpatialGridDataFrame")
+  
+  cells.col <- col2hexa(cells.col, alpha.channel = TRUE, alpha = cells.alpha, charstring = FALSE)
+  
+  tab <- list(x = x, name = name, cells.col = cells.col, x.bbox = x.bbox)
   
   class(tab) <- c("splgrid")
   return(tab)
