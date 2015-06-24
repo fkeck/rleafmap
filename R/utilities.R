@@ -244,40 +244,40 @@ bmCredit <- function(x){
 #'
 getExtBox <- function(sppts, spico, splns, sppol, spgrid){
   if(length(sppts) > 0){
-    a <- t(sapply(sppts, function(x) c(min(x$coords[, 1]), max(x$coords[, 1]),
+    sppts.bb <- t(sapply(sppts, function(x) c(min(x$coords[, 1]), max(x$coords[, 1]),
                                      min(x$coords[, 2]), max(x$coords[, 2]))))
   } else {
-    a <- rep(NA, 4)
+    sppts.bb <- rep(NA, 4)
   }
   
   if(length(spico) > 0){
-  b <- t(sapply(spico, function(x) c(min(x$coords[, 1]), max(x$coords[, 1]),
+    spico.bb <- t(sapply(spico, function(x) c(min(x$coords[, 1]), max(x$coords[, 1]),
                                    min(x$coords[, 2]), max(x$coords[, 2]))))
   } else {
-    b <- rep(NA, 4)
+    spico.bb <- rep(NA, 4)
   }
   
   if(length(splns) > 0){
-    c <- t(sapply(splns, function(x){z <- do.call("rbind", unlist(x$coords, recursive=FALSE));
+    splns.bb <- t(sapply(splns, function(x){z <- do.call("rbind", unlist(x$coords, recursive=FALSE));
                                      return(c(min(z[, 1]), max(z[, 1]), min(z[, 2]), max(z[, 2])))}))
   } else {
-    c <- rep(NA, 4)
+    splns.bb <- rep(NA, 4)
   }
   
   if(length(sppol) > 0){
-  d <- t(sapply(sppol, function(x){z <- do.call("rbind", unlist(x$coords, recursive=FALSE));
+    sppol.bb <- t(sapply(sppol, function(x){z <- do.call("rbind", unlist(x$coords, recursive=FALSE));
                               return(c(min(z[, 1]), max(z[, 1]), min(z[, 2]), max(z[, 2])))}))
   } else {
-    d <- rep(NA, 4)
+    sppol.bb <- rep(NA, 4)
   }
   
-  if(length(sppol) > 0){
-    e <- sapply(spgrid, function(x) as.vector(bbox(x$x))[c(1,3,2,4)])
+  if(length(spgrid) > 0){
+    spgrid.bb <- t(sapply(spgrid, function(x) as.vector(x$x.bbox)[c(1,3,2,4)]))
   } else {
-    e <- rep(NA, 4)
+    spgrid.bb <- rep(NA, 4)
   }
   
-  extbox <- rbind(a, b, c, d, e)
+  extbox <- rbind(sppts.bb, spico.bb, splns.bb, sppol.bb, spgrid.bb)
   extbox <- c(min(extbox[, 1], na.rm = TRUE),
               max(extbox[, 2], na.rm = TRUE),
               min(extbox[, 3], na.rm = TRUE),
