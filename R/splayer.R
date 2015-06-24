@@ -288,6 +288,11 @@ spLayer.SpatialGridDataFrame <- function(x, name=NULL,
   x <- x[layer]
   x.bbox <- bbox(x)
   
+  if(is.na(proj4string(x))){
+    proj4string(x) <- CRS("+init=epsg:4326")
+    warning("The coordinate system of the grid has not been recognized. It is assumed to be EPSG:4326")
+  }
+  
   x <- raster(x, layer = 1)
   x <- projectRaster(from = x, projectExtent(x, crs = CRS("+init=epsg:3857")))
   x <- as(x, "SpatialGridDataFrame")
@@ -305,9 +310,9 @@ spLayer.SpatialGridDataFrame <- function(x, name=NULL,
 #'
 #' This function tests arguments validity for the function \code{\link{spLayer}}.
 #' 
-spLayerControl <- function(name, size=1,
-                            stroke=T, stroke.col=1, stroke.lwd=1, stroke.lty=1, stroke.alpha=1,
-                            fill=T, fill.col=1, fill.alpha=1, label="", popup="", holes=F){
+spLayerControl <- function(name, size = 1,
+                            stroke = TRUE, stroke.col = 1, stroke.lwd = 1, stroke.lty = 1, stroke.alpha = 1,
+                            fill = TRUE, fill.col = 1, fill.alpha = 1, label = "", popup= "", holes = FALSE){
   if(!is.null(name)){
     if(is.vector(name) && length(name)==1){
       name <- as.character(name)
