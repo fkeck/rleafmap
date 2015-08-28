@@ -52,13 +52,13 @@ uiJS <- function(interface, ar){
     arNames <- xvarnames(ar)
     arNames.bl <- arNames[arNames$xclass == "basemap",]
     arNames.ol <- arNames[arNames$xclass != "basemap",]
-    if(dim(arNames.bl)[1]==0){
+    if(dim(arNames.bl)[1] == 0){
       bl.js <- "var baseMaps = 1"
     }else{
       bl.list <- paste("\"", arNames.bl$xname, "\" : ", arNames.bl$xvarname, sep="", collapse=",\n")
       bl.js <- paste("var baseMaps = {\n", bl.list, "\n};", sep="")
     }
-    if(dim(arNames.ol)[1]==0){
+    if(dim(arNames.ol)[1] == 0){
       ol.js <- "var overlayMaps = 1"
     }else{
       ol.list <- paste("\"", arNames.ol$xname, "\" : ", arNames.ol$xvarname, sep="", collapse=",\n")
@@ -70,6 +70,6 @@ uiJS <- function(interface, ar){
     layersInterface <- ""
   }
   
-  res <- list(ui.1=paste(zoomInterface, attribInterface, sep="\n\n"), ui.2=layersInterface)
+  res <- list(ui.1 = paste(zoomInterface, attribInterface, sep = "\n\n"), ui.2 = layersInterface)
   return(res)
 }
