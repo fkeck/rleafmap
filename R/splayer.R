@@ -61,18 +61,19 @@ spLayer.default <- function(x, ...){
 #'
 #'@rdname splayer_methods
 #'@export
-spLayer.SpatialPoints <- function(x, name=NULL, png=NULL, size=5, png.width=15, png.height=15,
-                                  stroke=T, stroke.col=1, stroke.lwd=1, stroke.lty=1, stroke.alpha=1,
-                                  fill=T, fill.col=2, fill.alpha=0.5,
-                                  label=NULL, popup="", popup.rmd = FALSE, ...){
+spLayer.SpatialPoints <- function(x, name = NULL, png = NULL, size = 5, png.width = 15, png.height = 15,
+                                  stroke = T, stroke.col = 1, stroke.lwd = 1, stroke.lty = 1, stroke.alpha = 1,
+                                  fill = T, fill.col = 2, fill.alpha = 0.5,
+                                  label = NULL, popup = "", popup.rmd = FALSE, legend = NULL, ...){
     if(is.null(png)){
       
       if(!inherits(x, "SpatialPoints"))
         stop("x must be an object of class SpatialPoints or SpatialPointsDataFrame")
       
-      spLayerControl(name=name, size=size,
+      spLayerControl(name=name, size=size, legend = legend,
                       stroke=stroke, stroke.col=stroke.col, stroke.lwd=stroke.lwd, stroke.lty=stroke.lty, stroke.alpha=stroke.alpha,
                       fill=fill, fill.col=fill.col, fill.alpha=fill.alpha)
+      
       tested.index <- !sapply(list(size, stroke, stroke.col, stroke.lwd, stroke.lty, stroke.alpha,
                                    fill, fill.col, fill.alpha, label, popup), is.null)
       
@@ -92,7 +93,9 @@ spLayer.SpatialPoints <- function(x, name=NULL, png=NULL, size=5, png.width=15, 
                         "fill", "fillCol", "fillAlpha", "label", "popup")[tested.index]
       names(tab) <- tested.names
       
+      legend$layer <- name
       tab$name <- name
+      tab$legend <- legend
       tab$coords <- coordinates(x)
       
       tab$strokeCol[!stroke.logical] <- tab$strokeLwd[!stroke.logical] <- tab$strokeLty[!stroke.logical] <- 1
@@ -122,6 +125,7 @@ spLayer.SpatialPoints <- function(x, name=NULL, png=NULL, size=5, png.width=15, 
         }
         tab$popup <- paste("\"", as.character(tab$popup), "\"", sep="")
       }
+
       class(tab) <- c("splpoints")
       return(tab)
       
@@ -156,10 +160,10 @@ spLayer.SpatialPoints <- function(x, name=NULL, png=NULL, size=5, png.width=15, 
 
 #'@rdname splayer_methods
 #'@export
-spLayer.SpatialLines <- function(x, name=NULL,
-                                 stroke=T, stroke.col=1, stroke.lwd=1, stroke.lty=1, stroke.alpha=1,
-                                 fill=T, fill.col=2, fill.alpha=0.5,
-                                 label=NULL, popup="", ...){
+spLayer.SpatialLines <- function(x, name = NULL,
+                                 stroke = TRUE, stroke.col = 1, stroke.lwd = 1, stroke.lty = 1, stroke.alpha = 1,
+                                 fill = TRUE, fill.col = 2, fill.alpha = 0.5,
+                                 label = NULL, popup = "", legend = NULL, ...){
   
   if(!inherits(x, "SpatialLines"))
     stop("x must be an object of class SpatialLines or SpatialLinesDataFrame")
@@ -206,10 +210,10 @@ spLayer.SpatialLines <- function(x, name=NULL,
 
 #'@rdname splayer_methods
 #'@export
-spLayer.SpatialPolygons <- function(x, name=NULL,
-                                    stroke=T, stroke.col=1, stroke.lwd=1, stroke.lty=1, stroke.alpha=1,
-                                    fill=T, fill.col=2, fill.alpha=0.5,
-                                    label=NULL, popup="", holes=FALSE){
+spLayer.SpatialPolygons <- function(x, name = NULL,
+                                    stroke = TRUE, stroke.col = 1, stroke.lwd = 1, stroke.lty = 1, stroke.alpha = 1,
+                                    fill = TRUE, fill.col = 2, fill.alpha = 0.5,
+                                    label = NULL, popup = "", holes = FALSE, legend = NULL, ...){
   if(!inherits(x, "SpatialPolygons"))
     stop("x must be an object of class SpatialPolygons or SpatialPolygonsDataFrame")
   
@@ -279,8 +283,8 @@ spLayer.SpatialPolygons <- function(x, name=NULL,
 #'@param cells.col a vector of any of the three kinds of \R color specifications giving a gradient to color the grid.
 #'@param cells.alpha a vector of numeric values in \eqn{[0, 1]} setting grid opacity.
 #'@export
-spLayer.SpatialGridDataFrame <- function(x, name=NULL,
-                                         layer, cells.col=heat.colors(12), cells.alpha=1, ...){
+spLayer.SpatialGridDataFrame <- function(x, name = NULL, layer,
+                                         cells.col = heat.colors(12), cells.alpha = 1, legend = NULL, ...){
   if(!inherits(x, "SpatialGridDataFrame"))
     stop("x must be an object of class SpatialGridDataFrame")
   spLayerControl(name=name)
@@ -310,9 +314,9 @@ spLayer.SpatialGridDataFrame <- function(x, name=NULL,
 #'
 #' This function tests arguments validity for the function \code{\link{spLayer}}.
 #' 
-spLayerControl <- function(name, size = 1,
+spLayerControl <- function(name, size = 1, legend = legend,
                             stroke = TRUE, stroke.col = 1, stroke.lwd = 1, stroke.lty = 1, stroke.alpha = 1,
-                            fill = TRUE, fill.col = 1, fill.alpha = 1, label = "", popup= "", holes = FALSE){
+                            fill = TRUE, fill.col = 1, fill.alpha = 1, label = "", popup = "", holes = FALSE){
   if(!is.null(name)){
     if(is.vector(name) && length(name)==1){
       name <- as.character(name)
@@ -327,6 +331,11 @@ spLayerControl <- function(name, size = 1,
       stop(("Missing value for size not allowed"))
     if(any(size<0))
       stop("size must be positive")
+  }
+  if(!is.null(legend)){
+    if(class(legend) != "layerlegend"){
+      stop("The legend is not valid. Objects passed with the 'legend' argument must be created with the 'layerLegend' function.")
+    }
   }
   if(!is.logical(stroke))
     stop("stroke must be set on TRUE or FALSE")
