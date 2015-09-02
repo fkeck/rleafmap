@@ -70,9 +70,9 @@ spLayer.SpatialPoints <- function(x, name = NULL, png = NULL, size = 5, png.widt
       if(!inherits(x, "SpatialPoints"))
         stop("x must be an object of class SpatialPoints or SpatialPointsDataFrame")
       
-      spLayerControl(name=name, size=size, legend = legend,
-                      stroke=stroke, stroke.col=stroke.col, stroke.lwd=stroke.lwd, stroke.lty=stroke.lty, stroke.alpha=stroke.alpha,
-                      fill=fill, fill.col=fill.col, fill.alpha=fill.alpha)
+      spLayerControl(name = name, size = size, legend = legend,
+                      stroke = stroke, stroke.col = stroke.col, stroke.lwd = stroke.lwd, stroke.lty = stroke.lty, stroke.alpha = stroke.alpha,
+                      fill = fill, fill.col = fill.col, fill.alpha = fill.alpha)
       
       tested.index <- !sapply(list(size, stroke, stroke.col, stroke.lwd, stroke.lty, stroke.alpha,
                                    fill, fill.col, fill.alpha, label, popup), is.null)
@@ -134,7 +134,7 @@ spLayer.SpatialPoints <- function(x, name = NULL, png = NULL, size = 5, png.widt
       if(!inherits(x, "SpatialPoints"))
         stop("x must be an object of class SpatialPoints or SpatialPointsDataFrame")
       
-      spLayerControl(name=name)
+      spLayerControl(name = name, legend = legend)
       size <- paste("[", png.width, ",", png.height, "]", sep="")  
       tested.index <- !sapply(list(png, size, label, popup), is.null)
       
@@ -168,8 +168,8 @@ spLayer.SpatialLines <- function(x, name = NULL,
   if(!inherits(x, "SpatialLines"))
     stop("x must be an object of class SpatialLines or SpatialLinesDataFrame")
   
-  spLayerControl(name=name,
-                  stroke=stroke, stroke.col=stroke.col, stroke.lwd=stroke.lwd, stroke.lty=stroke.lty, stroke.alpha=stroke.alpha)
+  spLayerControl(name = name, legend = legend,
+                  stroke = stroke, stroke.col = stroke.col, stroke.lwd = stroke.lwd, stroke.lty = stroke.lty, stroke.alpha = stroke.alpha)
   
   tested.index <- !sapply(list(stroke, stroke.col, stroke.lwd, stroke.lty, stroke.alpha,
                                label, popup), is.null)
@@ -217,9 +217,9 @@ spLayer.SpatialPolygons <- function(x, name = NULL,
   if(!inherits(x, "SpatialPolygons"))
     stop("x must be an object of class SpatialPolygons or SpatialPolygonsDataFrame")
   
-  spLayerControl(name=name,
-                  stroke=stroke, stroke.col=stroke.col, stroke.lwd=stroke.lwd, stroke.lty=stroke.lty, stroke.alpha=stroke.alpha,
-                  fill=fill, fill.col=fill.col, fill.alpha=fill.alpha)
+  spLayerControl(name = name, legend = legend,
+                  stroke = stroke, stroke.col = stroke.col, stroke.lwd = stroke.lwd, stroke.lty = stroke.lty, stroke.alpha = stroke.alpha,
+                  fill = fill, fill.col = fill.col, fill.alpha = fill.alpha)
   
   tested.index <- !sapply(list(stroke, stroke.col, stroke.lwd, stroke.lty, stroke.alpha,
                                fill, fill.col, fill.alpha, label, popup), is.null)
@@ -287,7 +287,7 @@ spLayer.SpatialGridDataFrame <- function(x, name = NULL, layer,
                                          cells.col = heat.colors(12), cells.alpha = 1, legend = NULL, ...){
   if(!inherits(x, "SpatialGridDataFrame"))
     stop("x must be an object of class SpatialGridDataFrame")
-  spLayerControl(name=name)
+  spLayerControl(name = name, legend = legend)
   
   x <- x[layer]
   x.bbox <- bbox(x)
