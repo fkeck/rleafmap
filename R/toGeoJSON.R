@@ -16,7 +16,7 @@ toGeoJSON <- function(x, lightjson=F){
   }
   holes.x <- x$holes
   order.x <- x$order
-  x <- x[!names(x) %in% c("name", "coords", "holes", "order")]
+  x <- x[!names(x) %in% c("name", "coords", "holes", "order", "legend")]
   props <- paste("\"", names(x), "\"", sep="")
   lix <- list()
   
