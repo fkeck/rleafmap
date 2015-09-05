@@ -24,8 +24,8 @@ NULL
 #'    \item CAPACITY The total capacity (beds) for each department.
 #'  }
 #' @source \itemize{
-#'    \item Institut National de l'Information Géographique et Forestière (2014)
-#'    \item ATOUT FRANCE - Agence de développement touristique de la France (2014).
+#'    \item Institut National de l'Information Geographique et Forestiere (2014)
+#'    \item ATOUT FRANCE - Agence de developpement touristique de la France (2014).
 #'  }
 #' @docType data
 #' @keywords datasets
@@ -49,8 +49,8 @@ NULL
 #'    \item PITCHES The number of camp pitches for each department.
 #'  }
 #' @source \itemize{
-#'    \item Institut National de l'Information Géographique et Forestière (2014)
-#'    \item ATOUT FRANCE - Agence de développement touristique de la France (2014).
+#'    \item Institut National de l'Information Geographique et Forestiere (2014)
+#'    \item ATOUT FRANCE - Agence de developpement touristique de la France (2014).
 #'  }
 #' @docType data
 #' @keywords datasets
@@ -59,11 +59,11 @@ NULL
 NULL
 
 
-#' Vélo'v stations
+#' Velo'v stations
 #' 
 #' Stations of the bicycle sharing system of the city of Lyon (France).
 #' 
-#' @format a \code{SpatialPointsDataFrame} with the location and name of the 349 Vélov stations (epsg:4326).
+#' @format a \code{SpatialPointsDataFrame} with the location and name of the 349 Velov stations (epsg:4326).
 #' @source
 #' OpenStreetMap (14/04/2014)
 #'
