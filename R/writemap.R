@@ -36,6 +36,13 @@ writeMap <- function(..., dir=getwd(), prefix="", width=700, height=400,
     if(is.null(ar[[i]]$name)){
       ar[[i]]$name <- depsub[i]
     }
+    if(!is.null(ar[[i]]$legend)){
+      ar[[i]]$legend$layer <- depsub[i]
+      ar[[i]]$legend$layer.name <- ar[[i]]$name
+      if(is.null(ar[[i]]$legend$title)){
+        ar[[i]]$legend$title <- ar[[i]]$name
+      }
+    }
   }
   
   viewer <- getOption("viewer")
@@ -93,18 +100,23 @@ writeMapInternal <- function(ar, dir, prefix, width, height, setView, setZoom,
     dir.create(data.dir)
   
   #Include html+css code
-  inc.encoding <- incEncoding(code="UTF-8")
-  inc.leaflet <- incLeaflet(loc=leaflet.loc)
-  inc.data <- incData(prefix=prefix)
-  init.map0 <- initMap0(height=height, width=width)
+  inc.encoding <- incEncoding(code = "UTF-8")
+  inc.leaflet <- incLeaflet(loc = leaflet.loc)
+  inc.data <- incData(prefix = prefix)
+  init.map0 <- initMap0(height = height, width = width)
   init.map1 <- initMap1(setView, setZoom)
-  inc.popup.css <- incPopupCSS(height=height, width=width)
-  
+  inc.extra.css <- paste("<style type=\"text/css\">",
+                         incPopupCSS(height = height, width = width),
+                         incLegendCSS(),
+                         incInfoPanelCSS(),
+                         "</style>", sep = "\n\n")
   
   #Interface Controls
   ui.js <- uiJS(interface = interface, ar = ar)
   ui.js.1 <- ui.js$ui.1
   ui.js.2 <- ui.js$ui.2
+  legend.js <- lapply(ar[sapply(ar, function(x) !is.null(x$legend))], function(x) processLegend(x$legend))
+  legend.js <- paste0(legend.js, collapse = "\n\n")
   
   # Base Map  
   bm <- ar[sapply(ar, function(x) is(x, "basemap"))]
@@ -171,16 +183,17 @@ writeMapInternal <- function(ar, dir, prefix, width, height, setView, setZoom,
   })
   
   if(is.null(setView)){
-    extbox <- getExtBox(sppts, spico, splns, sppol, spgrid)
+    extbox <- .getExtBox(sppts, spico, splns, sppol, spgrid)
     init.map1 <- paste0(init.map1, "\n",
                        "map.fitBounds([[", extbox[3], ",", extbox[1],"], [", extbox[4], ",", extbox[2], "]]);")
   }
   
   # Compile
   map.file <- paste(dir, "/", prefix, "_map.html", sep="")
-  write(paste(inc.encoding, inc.leaflet, inc.popup.css, inc.data, init.map0,
+  write(paste(inc.encoding, inc.leaflet, inc.extra.css, inc.data, init.map0,
               "<script>", init.map1, ui.js.1, bm.js,
-              sppol.js, spgrid.js, splns.js, sppts.js, spico.js, ui.js.2, "</script>",
+              sppol.js, spgrid.js, splns.js, sppts.js, spico.js,
+              ui.js.2, legend.js, "</script>",
               sep="\n\n"), map.file)
 
 }
