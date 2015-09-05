@@ -1,8 +1,4 @@
-#' Internals functions
-#'
-#' These functions are used internally by \pkg{rleafmap}.
-#'
-#'@rdname internals
+
 coords2json <- function(x, type, holes=NULL, order=NULL){   #x=coords; holes=booleans vector; type=class
   if(type=="splpoints"||type=="splicons"){
     res <- paste("[", x[,1], ", ", x[,2], "]", sep="")
@@ -29,7 +25,6 @@ coords2json <- function(x, type, holes=NULL, order=NULL){   #x=coords; holes=boo
   return(res)
 }
 
-#'@rdname internals
 holify <- function(a, b){
   for(i in 1:length(a)){
     if (a[i]==T && i>1){
@@ -40,7 +35,6 @@ holify <- function(a, b){
   return(b)
 }
 
-#'@rdname internals
 polycoords <- function(x){  #Extrait les coordonnees d'un objet SpatialPolygons
   res <- x@polygons
   res <- lapply(res, function(x) x@Polygons)
@@ -48,7 +42,6 @@ polycoords <- function(x){  #Extrait les coordonnees d'un objet SpatialPolygons
   return(res)
 }
 
-#'@rdname internals
 polyholes <- function(x){  #Extrait les slots 'hole' d'un objet SpatialPolygons
   res <- x@polygons
   res <- lapply(res, function(x) x@Polygons)
@@ -56,26 +49,22 @@ polyholes <- function(x){  #Extrait les slots 'hole' d'un objet SpatialPolygons
   return(res)
 }
 
-#'@rdname internals
 polyorder <- function(x){  #Extrait les slots 'plotOrder' d'un objet SpatialPolygons
   res <- x@polygons
   res <- lapply(res, function(x) x@plotOrder)
   return(res)
 }
 
-#'@rdname internals
 proclines <- function(x) {
   res <- paste("[", x[,1], ", ",x[,2], "]", sep="", collapse=", ")
   res <- paste("[", res, "]", sep="")
 }
 
-#'@rdname internals
 procpolys <- function(x) {
   res <- paste("[", x[,1], ", ",x[,2], "]", sep="", collapse=", ")
   res <- paste("[[", res, "]]", sep="")
 }
 
-#'@rdname internals
 pngasp <- function(x){ #x is an sp bounding box.
   xlim <- x[1,]
   ylim <- x[2,]
@@ -84,15 +73,7 @@ pngasp <- function(x){ #x is an sp bounding box.
   return(asp)
 }
 
-#INUTILE ?
-# exnames <- function(x, match.class){ #x is a list of spl objects, match.class is a vector of classes names to match
-#   cl <- sapply(x, class)
-#   x <- x[cl %in% match.class]
-#   res <- unlist(sapply(x, function(x) x["name"]))
-#   return(res)
-# }
 
-#'@rdname internals
 class2var <- function(x){
   switch(x,
          "basemap"="BaseMap",
@@ -103,7 +84,6 @@ class2var <- function(x){
          "splgrid"="Raster")
 }
 
-#'@rdname internals
 xvarnames <- function(x){ #x est une liste d'objets spl
   xclass <- sapply(x, function(x) return(class(x)))
   xname <- sapply(x, function(x) return(x$name))
@@ -113,7 +93,6 @@ xvarnames <- function(x){ #x est une liste d'objets spl
   return (res)
 }
 
-#'@rdname internals
 safeVar <- function(x){
   x <- gsub("[^A-Za-z0-9]", "", x)
   test1 <- grepl("[0-9]", substr(x, 1, 1))
@@ -125,7 +104,6 @@ safeVar <- function(x){
   return(x)
 }
 
-#'@rdname internals
 cleanDepsub <- function(x){
   x <- paste(x, collapse="")
   x <- substr(x, 5, nchar(x))
@@ -238,11 +216,9 @@ bmCredit <- function(x){
   return(res)
 }
 
-#'Global Bounding Box
-#'
-#'Get the global bounding box of the data included in a map
-#'
-getExtBox <- function(sppts, spico, splns, sppol, spgrid){
+
+# Get the global bounding box of the data included in a map
+.getExtBox <- function(sppts, spico, splns, sppol, spgrid){
   if(length(sppts) > 0){
     sppts.bb <- t(sapply(sppts, function(x) c(min(x$coords[, 1]), max(x$coords[, 1]),
                                      min(x$coords[, 2]), max(x$coords[, 2]))))
