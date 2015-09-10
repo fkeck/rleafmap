@@ -65,7 +65,7 @@ spLayer.default <- function(x, ...){
 #'@method spLayer SpatialPoints
 #'@export
 spLayer.SpatialPoints <- function(x, name = NULL, png = NULL, size = 5, png.width = 15, png.height = 15,
-                                  stroke = TRUE, stroke.col = 1, stroke.lwd = 1, stroke.lty = 1, stroke.alpha = 1,
+                                  stroke = TRUE, stroke.col = 1, stroke.lwd = 1, stroke.lty = -1, stroke.alpha = 1,
                                   fill = TRUE, fill.col = 2, fill.alpha = 0.5,
                                   label = NULL, popup = "", popup.rmd = FALSE, legend = NULL, ...){
     if(is.null(png)){
@@ -176,7 +176,7 @@ spLayer.SpatialPoints <- function(x, name = NULL, png = NULL, size = 5, png.widt
 #'@method spLayer SpatialLines
 #'@export
 spLayer.SpatialLines <- function(x, name = NULL,
-                                 stroke = TRUE, stroke.col = 1, stroke.lwd = 1, stroke.lty = 1, stroke.alpha = 1,
+                                 stroke = TRUE, stroke.col = 1, stroke.lwd = 1, stroke.lty = -1, stroke.alpha = 1,
                                  label = NULL, popup = "", popup.rmd = FALSE, legend = NULL, ...){
   
   if(!inherits(x, "SpatialLines"))
@@ -238,7 +238,7 @@ spLayer.SpatialLines <- function(x, name = NULL,
 #'@method spLayer SpatialPolygons
 #'@export
 spLayer.SpatialPolygons <- function(x, name = NULL,
-                                    stroke = TRUE, stroke.col = 1, stroke.lwd = 1, stroke.lty = 1, stroke.alpha = 1,
+                                    stroke = TRUE, stroke.col = 1, stroke.lwd = 1, stroke.lty = -1, stroke.alpha = 1,
                                     fill = TRUE, fill.col = 2, fill.alpha = 0.5,
                                     label = NULL, popup = "", popup.rmd = FALSE, holes = FALSE, legend = NULL, ...){
   if(!inherits(x, "SpatialPolygons"))
