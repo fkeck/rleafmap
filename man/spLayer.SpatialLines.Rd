@@ -5,7 +5,7 @@
 \title{Define a Vector Data Layer}
 \usage{
 \method{spLayer}{SpatialLines}(x, name = NULL, stroke = TRUE,
-  stroke.col = 1, stroke.lwd = 1, stroke.lty = 1, stroke.alpha = 1,
+  stroke.col = 1, stroke.lwd = 1, stroke.lty = -1, stroke.alpha = 1,
   label = NULL, popup = "", popup.rmd = FALSE, legend = NULL, ...)
 }
 \arguments{
