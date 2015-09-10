@@ -98,6 +98,12 @@ writeMapInternal <- function(ar, dir, prefix, width, height, setView, setZoom,
   data.dir <- paste(dir, "/", prefix,"_data", sep="")
   if(!file.exists(data.dir))
     dir.create(data.dir)
+  icons.dir <- paste0(data.dir, "/", prefix, "_icons")
+  if(!file.exists(icons.dir))
+    dir.create(icons.dir)
+  icons.legend.dir <- paste0(icons.dir, "/", prefix, "_legend_icons")
+  if(!file.exists(icons.legend.dir))
+    dir.create(icons.legend.dir)
   
   #Include html+css code
   inc.encoding <- incEncoding(code = "UTF-8")
@@ -115,10 +121,10 @@ writeMapInternal <- function(ar, dir, prefix, width, height, setView, setZoom,
   ui.js <- uiJS(interface = interface, ar = ar)
   ui.js.1 <- ui.js$ui.1
   ui.js.2 <- ui.js$ui.2
-  legend.js <- lapply(ar[sapply(ar, function(x) !is.null(x$legend))], function(x) processLegend(x$legend))
+  legend.js <- lapply(ar[sapply(ar, function(x) !is.null(x$legend))], function(x) processLegend(x$legend, icons.legend.dir = icons.legend.dir, prefix = prefix))
   legend.js <- paste0(legend.js, collapse = "\n\n")
   
-  # Base Map  
+  # Base Map
   bm <- ar[sapply(ar, function(x) is(x, "basemap"))]
   bm.js <- lapply(bm, toJS)
   bm.js <- do.call("paste", c(bm.js, sep="\n\n"))
@@ -135,10 +141,7 @@ writeMapInternal <- function(ar, dir, prefix, width, height, setView, setZoom,
   spico <- ar[sapply(ar, function(x) is(x, "splicons"))]
   icons.list <- lapply(spico, function(x) x$png)
   icons.list <- levels(as.factor(do.call("c", icons.list)))
-  icons.dir <- paste(data.dir, "/", prefix, "_icons", sep="")
-  if(!file.exists(icons.dir))
-    dir.create(icons.dir)
-  file.copy(from=icons.list, to=icons.dir)
+  file.copy(from = icons.list, to = icons.dir)
   spico <- lapply(spico, function(x) {
     x$png <- paste("\"", prefix, "_data", "/", prefix, "_icons", "/",
                    gsub("(.*\\/)([^.]+\\.[[:alnum:]]+$)","\\2", x$png), "\"",
