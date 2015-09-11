@@ -1,7 +1,7 @@
 Package: rleafmap
 Title: Interactive Maps with R and Leaflet
 Description: This package allows to display spatial data with interactive maps powered by Leaflet.
-It is designed to be easy to use and provides the features necessary to generate nice interactive maps with R.
+  It is designed to be easy to use and provides the features necessary to generate nice interactive maps with R.
 Version: 0.1
 Author: Francois Keck <francois.keck@gmail.com>
 Maintainer: Francois Keck <francois.keck@gmail.com>
