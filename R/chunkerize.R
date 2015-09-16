@@ -67,7 +67,7 @@ chunkerize <- function(FUN, arg.names, arg.values, type = "block",
                        ", message=", message,
                        ", fig.width=", fig.width,
                        ", fig.height=", fig.height,
-                       ", fig.align=", fig.align, sep = "")
+                       ", fig.align='", fig.align, "'", sep = "")
     }
     res <- paste("\n```{r ", options, "}\n\t", res, "\n```\n", sep = "")
   }
