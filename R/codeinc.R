@@ -23,7 +23,6 @@ incPopupCSS <- function(height, width){
   res <- paste0(
 ".leaflet-popup-content {
   padding-right:20px !important;
-  width:auto !important;
   max-width:", width*0.75, "px !important;
   max-height:", height*0.75, "px !important;
   overflow:auto !important;
