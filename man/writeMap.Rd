@@ -28,7 +28,8 @@ setting the initial geographical center of the map.}
 to customize the interface controls.}
 
 \item{lightjson}{logical. Should GeoJSON files size be reducedby supressing
-extra whitespace characters and rounding numeric values? Default is \code{FALSE}.}
+extra whitespace characters and rounding numeric values? Default is \code{FALSE}.
+This is currently not compatible with RMarkdown popups.}
 
 \item{directView}{a character string indicating if and how should the map be displayed.
 Default option "\code{viewer}" uses (if available) the RStudio HTML viewer to display the map,

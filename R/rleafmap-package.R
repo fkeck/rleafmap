@@ -3,6 +3,10 @@
 #' @import sp
 #' @import knitr
 #' @import raster
+#' @importFrom grDevices col2rgb dev.off heat.colors png rgb
+#' @importFrom graphics par
+#' @importFrom methods as is
+#' @importFrom utils browseURL
 #'
 #' @name rleafmap
 #' @docType package

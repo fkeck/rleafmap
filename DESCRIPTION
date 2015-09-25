@@ -10,5 +10,9 @@ Depends:
 Imports:
     knitr (>= 1.5),
     sp,
-    raster
+    raster,
+    methods,
+    grDevices,
+    graphics,
+    utils
 License: GPL-3
