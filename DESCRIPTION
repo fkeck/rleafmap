@@ -1,7 +1,8 @@
 Package: rleafmap
 Title: Interactive Maps with R and Leaflet
-Description: Display spatial data with interactive maps powered by the open-source JavaScript library 'Leaflet'. Maps can be rendered in a web browser or
-  displayed in the HTML viewer pane of 'RStudio'. The package is designed to be easy to use and
+Description: Display spatial data with interactive maps powered by the 
+  open-source JavaScript library 'Leaflet' (see <http://leafletjs.com/>). Maps can be rendered in a web browser or
+  displayed in the HTML viewer pane of 'RStudio'. This package is designed to be easy to use and
   can create complex maps with vector and raster data, web served map tiles and interface elements.
 Version: 0.2
 Author: Francois Keck <francois.keck@gmail.com>
