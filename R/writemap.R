@@ -177,9 +177,12 @@ writeMapInternal <- function(ar, dir, prefix, width, height, setView, setZoom,
   if(!file.exists(raster.dir))
     dir.create(raster.dir)
   spgrid.js <- lapply(spgrid, function(x){
+    if(!capabilities("png")){
+      warning("The png function is not operational on this system.")
+    }
     url <- paste(raster.dir, "/", prefix, "_", safeVar(x$name), ".png", sep="")
     spgrid.js <- toJS(x, paste(prefix, "_data","/", prefix, "_rasters", "/", prefix, "_", safeVar(x$name), ".png", sep=""))
-    png(url, bg = "transparent", width = 1200, height = round(1200 * pngasp(x$x.bbox)), type = "cairo")
+    png(url, bg = "transparent", width = 1200, height = round(1200 * pngasp(x$x.bbox)))
     par(mar = c(0, 0, 0, 0), xaxs = "i", yaxs = "i")    
     image(x$x, col = x$cells.col, asp = 1/cos((mean(x$x.bbox[1, ]) * pi)/180))
     dev.off()
