@@ -128,15 +128,15 @@ writeMapInternal <- function(ar, dir, prefix, width, height, setView, setZoom,
   # Base Map
   bm <- ar[sapply(ar, function(x) is(x, "basemap"))]
   bm.js <- lapply(bm, toJS)
-  bm.js <- do.call("paste", c(bm.js, sep="\n\n"))
+  bm.js <- do.call("paste", c(bm.js, sep = "\n\n"))
   
   # Points  
   sppts <- ar[sapply(ar, function(x) is(x, "splpoints"))]
-  sppts.json <- lapply(sppts, toGeoJSON, lightjson=lightjson)
-  sppts.json <- do.call("paste", c(sppts.json, sep="\n\n\n\n"))
-  write(sppts.json, paste(data.dir, "/", prefix,"_datapoints.js", sep=""))
+  sppts.json <- lapply(sppts, toGeoJSON, lightjson = lightjson)
+  sppts.json <- do.call("paste", c(sppts.json, sep = "\n\n\n\n"))
+  write(sppts.json, paste(data.dir, "/", prefix, "_datapoints.js", sep = ""))
   sppts.js <- lapply(sppts, toJS)
-  sppts.js <- do.call("paste", c(sppts.js, sep="\n\n"))
+  sppts.js <- do.call("paste", c(sppts.js, sep = "\n\n"))
   
   # Icons
   spico <- ar[sapply(ar, function(x) is(x, "splicons"))]
@@ -149,39 +149,39 @@ writeMapInternal <- function(ar, dir, prefix, width, height, setView, setZoom,
                    sep="")
     return(x)
   })
-  spico.json <- lapply(spico, toGeoJSON, lightjson=lightjson)
+  spico.json <- lapply(spico, toGeoJSON, lightjson = lightjson)
   spico.json <- do.call("paste", c(spico.json, sep="\n\n\n\n"))
-  write(spico.json, paste(data.dir, "/", prefix,"_dataicons.js", sep=""))
+  write(spico.json, paste(data.dir, "/", prefix, "_dataicons.js", sep = ""))
   spico.js <- lapply(spico, toJS)
-  spico.js <- do.call("paste", c(spico.js, sep="\n\n"))
+  spico.js <- do.call("paste", c(spico.js, sep = "\n\n"))
   
   # Lines  
   splns <- ar[sapply(ar, function(x) is(x, "spllines"))]
-  splns.json <- lapply(splns, toGeoJSON, lightjson=lightjson)
-  splns.json <- do.call("paste", c(splns.json, sep="\n\n\n\n"))
-  write(splns.json, paste(data.dir, "/", prefix,"_datalines.js", sep=""))
+  splns.json <- lapply(splns, toGeoJSON, lightjson = lightjson)
+  splns.json <- do.call("paste", c(splns.json, sep = "\n\n\n\n"))
+  write(splns.json, paste(data.dir, "/", prefix,"_datalines.js", sep = ""))
   splns.js <- lapply(splns, toJS)
-  splns.js <- do.call("paste", c(splns.js, sep="\n\n"))
+  splns.js <- do.call("paste", c(splns.js, sep = "\n\n"))
   
   # Polygons  
   sppol <- ar[sapply(ar, function(x) is(x, "splpolygons"))]
-  sppol.json <- lapply(sppol, toGeoJSON, lightjson=lightjson)
-  sppol.json <- do.call("paste", c(sppol.json, sep="\n\n\n\n"))
-  write(sppol.json, paste(data.dir, "/", prefix,"_datapolygons.js", sep=""))
+  sppol.json <- lapply(sppol, toGeoJSON, lightjson = lightjson)
+  sppol.json <- do.call("paste", c(sppol.json, sep = "\n\n\n\n"))
+  write(sppol.json, paste(data.dir, "/", prefix, "_datapolygons.js", sep = ""))
   sppol.js <- lapply(sppol, toJS)
-  sppol.js <- do.call("paste", c(sppol.js, sep="\n\n"))
+  sppol.js <- do.call("paste", c(sppol.js, sep= "\n\n"))
   
   #Rasters
   spgrid <- ar[sapply(ar, function(x) is(x, "splgrid"))]
-  raster.dir <- paste(data.dir, "/", prefix, "_rasters", sep="")
+  raster.dir <- paste(data.dir, "/", prefix, "_rasters", sep = "")
   if(!file.exists(raster.dir))
     dir.create(raster.dir)
   spgrid.js <- lapply(spgrid, function(x){
     if(!capabilities("png")){
       warning("The png function is not operational on this system.")
     }
-    url <- paste(raster.dir, "/", prefix, "_", safeVar(x$name), ".png", sep="")
-    spgrid.js <- toJS(x, paste(prefix, "_data","/", prefix, "_rasters", "/", prefix, "_", safeVar(x$name), ".png", sep=""))
+    url <- paste(raster.dir, "/", prefix, "_", safeVar(x$name), ".png", sep = "")
+    spgrid.js <- toJS(x, paste(prefix, "_data", "/", prefix, "_rasters", "/", prefix, "_", safeVar(x$name), ".png", sep = ""))
     png(url, bg = "transparent", width = 1200, height = round(1200 * pngasp(x$x.bbox)))
     par(mar = c(0, 0, 0, 0), xaxs = "i", yaxs = "i")    
     image(x$x, col = x$cells.col, asp = 1/cos((mean(x$x.bbox[1, ]) * pi)/180))
