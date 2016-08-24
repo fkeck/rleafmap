@@ -167,8 +167,8 @@ writeMapInternal <- function(ar, dir, prefix, width, height, setView, setZoom,
   sppol <- ar[sapply(ar, function(x) is(x, "splpolygons"))]
   sppol.json <- lapply(sppol, toGeoJSON, lightjson = lightjson)
   sppol.json <- do.call("paste", c(sppol.json, sep = "\n\n\n\n"))
-  out <- file(paste0(data.dir, "/", prefix, "_datapolygons.js"), open = "w", encoding = "UTF-8")
-  write(sppol.json, file = out)
+  out <- file(paste0(data.dir, "/", prefix, "_datapolygons.js"), open = "w")
+  cat(iconv(sppol.json, to = "UTF-8"), file = out)
   close(con = out)
   #write(sppol.json, paste(data.dir, "/", prefix, "_datapolygons.js", sep = ""))
   #Check if it corrects locale problems on Windows. If yes, apply to the others types of data.
