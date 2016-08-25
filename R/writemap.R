@@ -134,7 +134,10 @@ writeMapInternal <- function(ar, dir, prefix, width, height, setView, setZoom,
   sppts <- ar[sapply(ar, function(x) is(x, "splpoints"))]
   sppts.json <- lapply(sppts, toGeoJSON, lightjson = lightjson)
   sppts.json <- do.call("paste", c(sppts.json, sep = "\n\n\n\n"))
-  write(sppts.json, paste(data.dir, "/", prefix, "_datapoints.js", sep = ""))
+  out <- file(paste0(data.dir, "/", prefix, "_datapoints.js"), open = "w")
+  cat(iconv(sppts.json, to = "UTF-8"), file = out)
+  close(con = out)
+  rm(out)
   sppts.js <- lapply(sppts, toJS)
   sppts.js <- do.call("paste", c(sppts.js, sep = "\n\n"))
   
@@ -151,7 +154,10 @@ writeMapInternal <- function(ar, dir, prefix, width, height, setView, setZoom,
   })
   spico.json <- lapply(spico, toGeoJSON, lightjson = lightjson)
   spico.json <- do.call("paste", c(spico.json, sep="\n\n\n\n"))
-  write(spico.json, paste(data.dir, "/", prefix, "_dataicons.js", sep = ""))
+  out <- file(paste0(data.dir, "/", prefix, "_dataicons.js"), open = "w")
+  cat(iconv(spico.json, to = "UTF-8"), file = out)
+  close(con = out)
+  rm(out)
   spico.js <- lapply(spico, toJS)
   spico.js <- do.call("paste", c(spico.js, sep = "\n\n"))
   
@@ -159,7 +165,10 @@ writeMapInternal <- function(ar, dir, prefix, width, height, setView, setZoom,
   splns <- ar[sapply(ar, function(x) is(x, "spllines"))]
   splns.json <- lapply(splns, toGeoJSON, lightjson = lightjson)
   splns.json <- do.call("paste", c(splns.json, sep = "\n\n\n\n"))
-  write(splns.json, paste(data.dir, "/", prefix,"_datalines.js", sep = ""))
+  out <- file(paste0(data.dir, "/", prefix, "_datalines.js"), open = "w")
+  cat(iconv(splns.json, to = "UTF-8"), file = out)
+  close(con = out)
+  rm(out)
   splns.js <- lapply(splns, toJS)
   splns.js <- do.call("paste", c(splns.js, sep = "\n\n"))
   
@@ -170,8 +179,7 @@ writeMapInternal <- function(ar, dir, prefix, width, height, setView, setZoom,
   out <- file(paste0(data.dir, "/", prefix, "_datapolygons.js"), open = "w")
   cat(iconv(sppol.json, to = "UTF-8"), file = out)
   close(con = out)
-  #write(sppol.json, paste(data.dir, "/", prefix, "_datapolygons.js", sep = ""))
-  #Check if it corrects locale problems on Windows. If yes, apply to the others types of data.
+  rm(out)
   sppol.js <- lapply(sppol, toJS)
   sppol.js <- do.call("paste", c(sppol.js, sep= "\n\n"))
   
