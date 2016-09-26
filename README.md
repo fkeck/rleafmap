@@ -7,7 +7,7 @@ rleafmap is an R package to display spatial data with interactive maps powered b
 
 To install the package you can use devtools:
 
-    devtools::install_github("fkeck/phylosignal")
+    devtools::install_github("fkeck/rleafmap")
 
 ## Getting started
 Here is a [presentation](http://www.francoiskeck.fr/rleafmap/docs/rleafmap_rencontreR/index_EN.html)  of the package (use fullscreen to avoid display problems).
