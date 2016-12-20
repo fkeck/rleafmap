@@ -2,3 +2,4 @@
 ^\.Rproj\.user$
 ignore
 ^\.travis\.yml$
+LICENSE.md
