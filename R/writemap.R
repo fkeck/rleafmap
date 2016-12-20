@@ -23,13 +23,14 @@
 #' @param leaflet.loc a character string specifying the location (directory) of the leaflet library.
 #' If set to "\code{online}" (default), the library is loaded from the leaflet
 #' official CDN and requires an internet connection.
+#' @param popup.style an optional character string of CSS to customize popups content properties (width, color, etc).
 #' 
 #' @export
 writeMap <- function(..., dir=getwd(), prefix="", width=700, height=400,
                      setView=NULL, setZoom=NULL,
                      interface=NULL, lightjson=FALSE,
                      directView=c("viewer", "browser", "disabled"),
-                     leaflet.loc="online"){
+                     leaflet.loc="online", popup.style = NULL){
   ar <- list(...)
   depsub <- deparse(substitute(list(...)))
   depsub <- unlist(cleanDepsub(depsub))
@@ -53,7 +54,7 @@ writeMap <- function(..., dir=getwd(), prefix="", width=700, height=400,
   
   writeMapInternal(ar=ar, dir=dir, prefix=prefix, width=width, height=height, setView=setView,
                    setZoom=setZoom, interface=interface,
-                   lightjson=lightjson, leaflet.loc=leaflet.loc)
+                   lightjson=lightjson, leaflet.loc=leaflet.loc, popup.style = popup.style)
   
   if(user.view == "browser"){
     browseURL(map.file)
@@ -67,7 +68,7 @@ writeMap <- function(..., dir=getwd(), prefix="", width=700, height=400,
       writeMapInternal(ar=ar, dir=tempdir(), prefix=prefix, width=width,
                        height=height, setView=setView,
                        setZoom=setZoom, interface=interface,
-                       lightjson=lightjson, leaflet.loc=leaflet.loc)
+                       lightjson=lightjson, leaflet.loc=leaflet.loc, popup.style = popup.style)
       if(leaflet.loc != "online"){
         #       file.copy(from=paste(leaflet.loc, "/leaflet.css", sep=""), to=tempdir(), overwrite=T)
         #       file.copy(from=paste(leaflet.loc, "/leaflet.js", sep=""), to=tempdir(), overwrite=T)
@@ -83,7 +84,7 @@ writeMap <- function(..., dir=getwd(), prefix="", width=700, height=400,
 
 
 writeMapInternal <- function(ar, dir, prefix, width, height, setView, setZoom,
-                             interface, lightjson, leaflet.loc){
+                             interface, lightjson, leaflet.loc, popup.style){
   
   ar.valid.class <- sapply(ar, function(x) is(x, "basemap") || is(x, "splpoints") || is(x, "splicons") || is(x, "spllines") || is(x, "splpolygons") || is(x, "splgrid"))
   if (any(ar.valid.class==FALSE)){
@@ -112,8 +113,13 @@ writeMapInternal <- function(ar, dir, prefix, width, height, setView, setZoom,
   inc.data <- incData(prefix = prefix)
   init.map0 <- initMap0(height = height, width = width)
   init.map1 <- initMap1(setView, setZoom)
+  if(is.null(popup.style)){
+    popup.style <- incPopupCSS(height = height, width = width)
+  } else {
+    popup.style <- paste0(".leaflet-popup-content {", popup.style, "}")
+  }
   inc.extra.css <- paste("<style type=\"text/css\">",
-                         incPopupCSS(height = height, width = width),
+                         popup.style,
                          incLegendCSS(),
                          incInfoPanelCSS(),
                          "</style>", sep = "\n\n")
