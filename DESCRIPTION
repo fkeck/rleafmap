@@ -20,4 +20,4 @@ Imports:
     utils
 License: GPL-3
 URL: http://www.francoiskeck.fr/rleafmap/, https://github.com/fkeck/rleafmap
-RoxygenNote: 5.0.1
+RoxygenNote: 7.2.1

@@ -1,4 +1,8 @@
-[![Build Status](https://travis-ci.org/fkeck/rleafmap.svg?branch=master)](https://travis-ci.org/fkeck/rleafmap)
+
+<!-- badges: start -->
+  [![R-CMD-check](https://github.com/fkeck/rleafmap/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/fkeck/rleafmap/actions/workflows/R-CMD-check.yaml)
+  <!-- badges: end -->
+
 # rleafmap
 ## Interactive maps with R and Leaflet
 rleafmap is an R package to display spatial data with interactive maps powered by Leaflet.

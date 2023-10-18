@@ -3,3 +3,4 @@
 ignore
 ^\.travis\.yml$
 LICENSE.md
+^\.github$
