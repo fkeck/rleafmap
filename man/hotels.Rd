@@ -4,7 +4,8 @@
 \name{hotels}
 \alias{hotels}
 \title{French Hotels}
-\format{a \code{SpatialPolygonsDataFrame} with geometries of the 96 french departements (epsg:4326) and 12 variables.
+\format{
+a \code{SpatialPolygonsDataFrame} with geometries of the 96 french departements (epsg:4326) and 12 variables.
 \itemize{
    \item DEP.CODE The code number of each department.
    \item DEP.NAME The name of each department.
@@ -14,7 +15,8 @@
    \item N.5, N.4, N.3, N.2, N.1 The number of hotels for each ranking categories (i.e. stars).
    \item ROOMS The number of hotel's rooms for each department.
    \item CAPACITY The total capacity (beds) for each department.
- }}
+ }
+}
 \source{
 \itemize{
    \item Institut National de l'Information Geographique et Forestiere (2014)
@@ -28,4 +30,3 @@ data(hotels)
 This dataset gives the number of hotels, number of rooms and capacity for each department of metropolitan France.
 }
 \keyword{datasets}
-

@@ -4,9 +4,20 @@
 \alias{chunkerize}
 \title{Multiple code chunks}
 \usage{
-chunkerize(FUN, arg.names, arg.values, type = "block", echo = FALSE,
-  warning = FALSE, error = FALSE, message = TRUE, fig.width = 4,
-  fig.height = 4, fig.align = "center", options = NULL)
+chunkerize(
+  FUN,
+  arg.names,
+  arg.values,
+  type = "block",
+  echo = FALSE,
+  warning = FALSE,
+  error = FALSE,
+  message = TRUE,
+  fig.width = 4,
+  fig.height = 4,
+  fig.align = "center",
+  options = NULL
+)
 }
 \arguments{
 \item{FUN}{the function to use for the chunks.}
@@ -44,4 +55,3 @@ This function creates multiple code chunks from a function and along arguments m
 Each of these special arguments is a list.
 The nth code chunk will use the nth element of each marked list (recycled if necessary) as argument.
 }
-

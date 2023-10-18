@@ -4,8 +4,15 @@
 \alias{basemap}
 \title{Define a Tile Basemap Layer}
 \usage{
-basemap(URL, name = NULL, alpha = 1, minZoom = 0, maxZoom = 18,
-  tileSize = 256, tms = FALSE)
+basemap(
+  URL,
+  name = NULL,
+  alpha = 1,
+  minZoom = 0,
+  maxZoom = 18,
+  tileSize = 256,
+  tms = FALSE
+)
 }
 \arguments{
 \item{URL}{a character string giving the tile server url or a the name of a pre-configured server.}
@@ -43,4 +50,3 @@ by the function \code{bmSource}.
 \seealso{
 \code{\link{spLayer}} to define data layers.
 }
-

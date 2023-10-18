@@ -2,11 +2,11 @@
 % Please edit documentation in R/genmeths.R
 \name{summary.basemap}
 \alias{summary.basemap}
-\alias{summary.splgrid}
+\alias{summary.splpoints}
 \alias{summary.splicons}
 \alias{summary.spllines}
-\alias{summary.splpoints}
 \alias{summary.splpolygons}
+\alias{summary.splgrid}
 \alias{summary.ui}
 \title{Summary of map elements}
 \usage{
@@ -32,4 +32,3 @@
 \description{
 Get a summary of a map element.
 }
-

@@ -4,11 +4,27 @@
 \alias{spLayer.SpatialPoints}
 \title{Define a Vector Data Layer}
 \usage{
-\method{spLayer}{SpatialPoints}(x, name = NULL, png = NULL, size = 5,
-  png.width = 15, png.height = 15, stroke = TRUE, stroke.col = 1,
-  stroke.lwd = 1, stroke.lty = -1, stroke.alpha = 1, fill = TRUE,
-  fill.col = 2, fill.alpha = 0.5, label = NULL, popup = "",
-  popup.rmd = FALSE, legend = NULL, ...)
+\method{spLayer}{SpatialPoints}(
+  x,
+  name = NULL,
+  png = NULL,
+  size = 5,
+  png.width = 15,
+  png.height = 15,
+  stroke = TRUE,
+  stroke.col = 1,
+  stroke.lwd = 1,
+  stroke.lty = -1,
+  stroke.alpha = 1,
+  fill = TRUE,
+  fill.col = 2,
+  fill.alpha = 0.5,
+  label = NULL,
+  popup = "",
+  popup.rmd = FALSE,
+  legend = NULL,
+  ...
+)
 }
 \arguments{
 \item{x}{a spatial object (see Details).}
@@ -54,4 +70,3 @@
 \item \code{spLayer.SpatialPolygons} defines a new data layer from an object \code{SpatialPolygons} or \code{SpatialPolygonsDataFrame}
 }
 }
-

@@ -15,4 +15,3 @@ Returns invisibly a matrix with servers names, urls and credits.
 \description{
 Print a list of tiles servers ready-to-use with \code{\link{basemap}}.
 }
-

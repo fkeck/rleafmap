@@ -17,7 +17,3 @@ A character string of GeoJSON formatted code.
 \description{
 This function is used internally by \code{\link{writeMap}} to convert a given \code{spl} object to GeoJSON format.
 }
-\seealso{
-\code{\link[rgdal]{writeOGR}} and its driver "\code{GeoJSON}" for GeoJSON export.
-}
-

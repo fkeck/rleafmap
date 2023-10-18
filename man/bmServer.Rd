@@ -15,4 +15,3 @@ The url of the server.
 \description{
 Take a tiles server name (as returned by \code{\link{bmSource}}) and return its url.
 }
-

@@ -5,7 +5,7 @@
 #' @param lightjson logical. Should GeoJSON code size be reduced by supressing extra whitespace characters and rounding numeric values?
 #' 
 #' @return A character string of GeoJSON formatted code.
-#' @seealso \code{\link[rgdal]{writeOGR}} and its driver "\code{GeoJSON}" for GeoJSON export.
+#' 
 toGeoJSON <- function(x, lightjson=F){
   x.class <- class(x)
   x <- as.list(x)

@@ -4,8 +4,15 @@
 \alias{spLayer.SpatialGridDataFrame}
 \title{Define a Raster Data Layer}
 \usage{
-\method{spLayer}{SpatialGridDataFrame}(x, name = NULL, layer,
-  cells.col = heat.colors(12), cells.alpha = 1, legend = NULL, ...)
+\method{spLayer}{SpatialGridDataFrame}(
+  x,
+  name = NULL,
+  layer,
+  cells.col = heat.colors(12),
+  cells.alpha = 1,
+  legend = NULL,
+  ...
+)
 }
 \arguments{
 \item{x}{a spatial object (see Details).}
@@ -25,4 +32,3 @@
 \description{
 \code{spLayer.SpatialGridDataFrame} defines a new data layer from an object \code{SpatialGridDataFrame}.
 }
-

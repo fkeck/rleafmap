@@ -15,4 +15,3 @@ uiJS(interface, ar)
 This function is used internally by \code{\link{writeMap}} to generate JavaScript code
 related to the user interface.
 }
-

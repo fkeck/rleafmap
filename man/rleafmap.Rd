@@ -3,9 +3,4 @@
 \docType{package}
 \name{rleafmap}
 \alias{rleafmap}
-\alias{rleafmap-package}
 \title{rleafmap}
-\description{
-rleafmap
-}
-

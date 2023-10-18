@@ -15,4 +15,3 @@ The attribution of the server.
 \description{
 Take a tiles server url and return its attribution.
 }
-

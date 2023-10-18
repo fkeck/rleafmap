@@ -4,10 +4,22 @@
 \alias{spLayerControl}
 \title{Testing user inputs}
 \usage{
-spLayerControl(name, size = 1, legend = legend, stroke = TRUE,
-  stroke.col = 1, stroke.lwd = 1, stroke.lty = 1, stroke.alpha = 1,
-  fill = TRUE, fill.col = 1, fill.alpha = 1, label = "", popup = "",
-  holes = FALSE)
+spLayerControl(
+  name,
+  size = 1,
+  legend = legend,
+  stroke = TRUE,
+  stroke.col = 1,
+  stroke.lwd = 1,
+  stroke.lty = 1,
+  stroke.alpha = 1,
+  fill = TRUE,
+  fill.col = 1,
+  fill.alpha = 1,
+  label = "",
+  popup = "",
+  holes = FALSE
+)
 }
 \arguments{
 \item{name}{a character string to name the layer.}
@@ -41,4 +53,3 @@ spLayerControl(name, size = 1, legend = legend, stroke = TRUE,
 \description{
 This function tests arguments validity for the function \code{\link{spLayer}}.
 }
-

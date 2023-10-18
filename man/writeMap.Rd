@@ -4,10 +4,20 @@
 \alias{writeMap}
 \title{Export and display the map}
 \usage{
-writeMap(..., dir = getwd(), prefix = "", width = 700, height = 400,
-  setView = NULL, setZoom = NULL, interface = NULL, lightjson = FALSE,
-  directView = c("viewer", "browser", "disabled"), leaflet.loc = "online",
-  popup.style = NULL)
+writeMap(
+  ...,
+  dir = getwd(),
+  prefix = "",
+  width = 700,
+  height = 400,
+  setView = NULL,
+  setZoom = NULL,
+  interface = NULL,
+  lightjson = FALSE,
+  directView = c("viewer", "browser", "disabled"),
+  leaflet.loc = "online",
+  popup.style = NULL
+)
 }
 \arguments{
 \item{...}{\code{basemap} and \code{spl} objects to embed into the map}
@@ -46,4 +56,3 @@ official CDN and requires an internet connection.}
 This function combines all the elements specified by the user and write
 the corresponding HTML and Javascript code in a local directory.
 }
-

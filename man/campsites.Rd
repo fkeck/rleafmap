@@ -4,7 +4,8 @@
 \name{campsites}
 \alias{campsites}
 \title{French Campsites}
-\format{a \code{SpatialPolygonsDataFrame} with geometries of the 96 french departements (epsg:4326) and 11 variables.
+\format{
+a \code{SpatialPolygonsDataFrame} with geometries of the 96 french departements (epsg:4326) and 11 variables.
 \itemize{
    \item DEP.CODE The code number of each department.
    \item DEP.NAME The name of each department.
@@ -13,7 +14,8 @@
    \item N.CAMPSITES The number of campsites.
    \item N.5, N.4, N.3, N.2, N.1 The number of campsites for each ranking categories (i.e. stars).
    \item PITCHES The number of camp pitches for each department.
- }}
+ }
+}
 \source{
 \itemize{
    \item Institut National de l'Information Geographique et Forestiere (2014)
@@ -27,4 +29,3 @@ data(campsites)
 This dataset gives the number of ranked campsites and the number of tent pitches for each department of metropolitan France.
 }
 \keyword{datasets}
-

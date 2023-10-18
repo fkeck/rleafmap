@@ -14,4 +14,3 @@
 \description{
 Define a Vector Data Layer
 }
-

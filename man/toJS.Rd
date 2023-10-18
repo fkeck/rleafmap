@@ -17,4 +17,3 @@ A character string of JavaScript Code.
 \description{
 This function is used internally by \code{\link{writeMap}} to generate Leaflet JavaScript code for a given layer.
 }
-

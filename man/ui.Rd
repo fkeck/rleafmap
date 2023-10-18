@@ -4,10 +4,12 @@
 \alias{ui}
 \title{Options settings for map interface}
 \usage{
-ui(zoom = c("topleft", "topright", "bottomleft", "bottomright", "none"),
+ui(
+  zoom = c("topleft", "topright", "bottomleft", "bottomright", "none"),
   layers = c("none", "topright", "topleft", "bottomleft", "bottomright"),
   attrib = c("bottomright", "topleft", "topright", "bottomleft", "none"),
-  attrib.text = "")
+  attrib.text = ""
+)
 }
 \arguments{
 \item{zoom}{a character string indicating if and how should the zoom control be displayed.
@@ -27,4 +29,3 @@ An object of class \code{ui} which can be directly given as \code{interface} arg
 \description{
 Allow the user to choose which interface elements are displayed on the map and their positions.
 }
-

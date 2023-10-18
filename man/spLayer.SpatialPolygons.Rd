@@ -4,10 +4,24 @@
 \alias{spLayer.SpatialPolygons}
 \title{Define a Vector Data Layer}
 \usage{
-\method{spLayer}{SpatialPolygons}(x, name = NULL, stroke = TRUE,
-  stroke.col = 1, stroke.lwd = 1, stroke.lty = -1, stroke.alpha = 1,
-  fill = TRUE, fill.col = 2, fill.alpha = 0.5, label = NULL,
-  popup = "", popup.rmd = FALSE, holes = FALSE, legend = NULL, ...)
+\method{spLayer}{SpatialPolygons}(
+  x,
+  name = NULL,
+  stroke = TRUE,
+  stroke.col = 1,
+  stroke.lwd = 1,
+  stroke.lty = -1,
+  stroke.alpha = 1,
+  fill = TRUE,
+  fill.col = 2,
+  fill.alpha = 0.5,
+  label = NULL,
+  popup = "",
+  popup.rmd = FALSE,
+  holes = FALSE,
+  legend = NULL,
+  ...
+)
 }
 \arguments{
 \item{x}{a spatial object (see Details).}
@@ -45,4 +59,3 @@
 \description{
 Define a Vector Data Layer
 }
-

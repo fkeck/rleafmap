@@ -30,4 +30,3 @@ Define a new data layer from an object sp.
  writeMap(bm1, cs, vv)
 }
 }
-

@@ -4,11 +4,25 @@
 \alias{layerLegend}
 \title{Data layer legend}
 \usage{
-layerLegend(style, labels = "", title = NULL, position = "bottomright",
-  png = NULL, size = 5, png.width = NULL, png.height = NULL,
-  stroke.col = 1, stroke.lwd = 1, stroke.lty = -1, stroke.alpha = 1,
-  fill.col = 2, fill.alpha = 0.5, cells.range = c(1, 10),
-  cells.col = heat.colors(12), cells.alpha = 1)
+layerLegend(
+  style,
+  labels = "",
+  title = NULL,
+  position = "bottomright",
+  png = NULL,
+  size = 5,
+  png.width = NULL,
+  png.height = NULL,
+  stroke.col = 1,
+  stroke.lwd = 1,
+  stroke.lty = -1,
+  stroke.alpha = 1,
+  fill.col = 2,
+  fill.alpha = 0.5,
+  cells.range = c(1, 10),
+  cells.col = heat.colors(12),
+  cells.alpha = 1
+)
 }
 \arguments{
 \item{style}{the style of legend to generate.
@@ -27,9 +41,7 @@ This must be one of "\code{topleft}", "\code{topright}", "\code{bottomleft}", "\
 
 \item{size}{a numerical vector giving the size of points (radius in pixels).}
 
-\item{png.width}{numerical vectors giving the PNG icons dimensions on the map (in pixels).}
-
-\item{png.height}{numerical vectors giving the PNG icons dimensions on the map (in pixels).}
+\item{png.width, png.height}{numerical vectors giving the PNG icons dimensions on the map (in pixels).}
 
 \item{stroke.col}{a vector of any of the three kinds of \R color specifications to set strokes color.}
 
@@ -55,4 +67,3 @@ an object \code{layerlegend} which can be passed to an \code{spLayer*} function 
 \description{
 This function creates a legend object that can be attached to a data layer.
 }
-

@@ -25,4 +25,3 @@ This function converts any color of the \R system to hexadecimal format.
 \code{\link[grDevices]{col2rgb}} for translating \R colors to RGB vectors.
 }
 \keyword{internal}
-

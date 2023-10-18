@@ -4,7 +4,9 @@
 \name{velov}
 \alias{velov}
 \title{Velo'v stations}
-\format{a \code{SpatialPointsDataFrame} with the location and name of the 349 Velov stations (epsg:4326).}
+\format{
+a \code{SpatialPointsDataFrame} with the location and name of the 349 Velov stations (epsg:4326).
+}
 \source{
 OpenStreetMap (14/04/2014)
 }
@@ -15,4 +17,3 @@ data(velov)
 Stations of the bicycle sharing system of the city of Lyon (France).
 }
 \keyword{datasets}
-
