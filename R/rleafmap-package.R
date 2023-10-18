@@ -1,4 +1,10 @@
 #' rleafmap
+#' 
+#' Display spatial data with interactive maps powered by the open-
+#' source JavaScript library 'Leaflet' (see <http://leafletjs.com/>). Maps can be
+#' rendered in a web browser or displayed in the HTML viewer pane of 'RStudio'.
+#' This package is designed to be easy to use and can create complex maps with
+#' vector and raster data, web served map tiles and interface elements.
 #'
 #' @import sp
 #' @import knitr
