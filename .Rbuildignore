@@ -7,3 +7,4 @@ LICENSE.md
 _data
 _map.html
 cran-comments.md
+^CRAN-SUBMISSION$
