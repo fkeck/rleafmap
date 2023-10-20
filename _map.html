@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+
+<style type="text/css">
+
+.leaflet-popup-content {
+  padding-right:20px !important;
+  width:auto !important;
+  max-width:412.5px !important;
+  max-height:262.5px !important;
+  overflow:auto !important;
+}
+
+.legend i {
+    clear: left;
+    float: left;
+    margin-right: 8px;
+    margin-top: 5px;
+  }
+  .legend p {
+    float: left;;
+    line-height: 5px;
+  }
+  .legend h1 {
+    font-size: 10px;
+    margin-top: 0px;
+    margin-bottom: 2px;
+  }
+  .legend hr {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    display: block;
+	  height: 1px;
+    border: 0;
+    border-top: 1px solid #AAAAAA;
+  }
+
+.info {
+    padding: 6px 8px;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+  }
+
+</style>
+
+<script src="_data/_datapoints.js"></script>
+<script src="_data/_dataicons.js"></script>
+<script src="_data/_datalines.js"></script>
+<script src="_data/_datapolygons.js"></script>
+
+<div id="map" class="map" style="height: 350px; width: 550px"></div>
+
+<script>
+
+var map = L.map('map', {zoomControl:false, attributionControl:false}).setView([46.5, 3], 5);
+
+L.control.zoom({position:'topleft'}).addTo(map);
+
+var attrib = L.control.attribution({prefix:false, position:'bottomright'}).addTo(map);
+
+                               attrib.addAttribution("Campsites Data: <a href='http://www.ign.fr/'>IGN</a>, <a href='http://atout-france.fr/'>ATOUT France</a>");
+
+var mapquestbmBaseMap = L.tileLayer('http://otile1.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.jpg', {
+opacity: 1,
+minZoom: 0,
+maxZoom: 18,
+tileSize: 256,
+tms: false,
+attribution: 'Tiles: <a href="http://www.mapquest.com/" target="_blank" title="Tiles Courtesy of MapQuest">MapQuest</a> | Data: <a href="http://openstreetmap.org" title="Data by OpenStreetMap, under CC BY SA">OSM</a>',
+}).addTo(map);
+
+var cslayPolygons = L.geoJson(cslay, {
+                 style: function (feature){
+                 return {
+                 stroke: feature.properties.stroke,
+                 color: feature.properties.strokeCol,
+                 weight: feature.properties.strokeLwd,
+                 dashArray: feature.properties.strokeLty,
+                 opacity: feature.properties.strokeAlpha,
+                 fill: feature.properties.fill,
+                 fillColor: feature.properties.fillCol,
+                 fillOpacity: feature.properties.fillAlpha
+                 };
+                 },
+                 onEachFeature: function(feature, layer){
+                 if (feature.properties.popup) {
+                 layer.bindPopup(feature.properties.popup);
+                 }
+                 }
+  }).addTo(map);
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>

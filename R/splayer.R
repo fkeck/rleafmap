@@ -375,7 +375,7 @@ spLayerControl <- function(name, size = 1, legend = legend,
       stop("size must be positive")
   }
   if(!is.null(legend)){
-    if(class(legend) != "layerlegend"){
+    if(!inherits(legend, "layerlegend")){
       stop("The legend is not valid. Objects passed with the 'legend' argument must be created with the 'layerLegend' function.")
     }
   }

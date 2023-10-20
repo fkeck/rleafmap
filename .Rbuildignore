@@ -4,3 +4,5 @@ ignore
 ^\.travis\.yml$
 LICENSE.md
 ^\.github$
+_data
+_map.html
